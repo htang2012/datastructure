@@ -27,6 +27,14 @@ void addNodetoList(int d)
      return; 
 }
 
+void addHeadtoList(int d)
+{
+     Node *newnode = new Node;
+     newnode-> data = d;
+     newnode -> next = gHeadptr;
+     gHeadptr = newnode;
+}
+
 void iterateList(void)
 {
      Node *cur = gHeadptr;
@@ -76,16 +84,33 @@ Node * searchList(int d)
     return NULL;    
 }
 
+
+void reverseList(void)
+{
+     Node *prev = gHeadptr;
+     Node *cur = gHeadptr -> next;
+     Node *next = cur-> next;
+     gHeadptr -> next = NULL;
+     while(next->next) {
+        cur -> next = prev;
+        prev = cur;
+        cur = next;
+        next = next->next; 
+     }
+     cur -> next = prev;
+     next -> next = cur;
+     gHeadptr = next;
+}
+
 int main(void)
 {
      for ( int i = 100; i< 120; i ++ )
      addNodetoList(i);
      cout << "length is:" << lenList() << endl;
      iterateList();
-     deleteNodefromList(110);
-     deleteNodefromList(108);
+     reverseList();
+     addHeadtoList(1);
      iterateList();
-     cout << searchList(150) << endl;
      cout << " End test " << endl;
 }
 
