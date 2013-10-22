@@ -102,15 +102,44 @@ void reverseList(void)
      gHeadptr = next;
 }
 
+bool hasLoop( Node *startNode)
+{
+    Node *slowNode = startNode;
+    Node *fastNodeA = startNode;
+    Node *fastNodeB = startNode;
+    while( slowNode && fastNodeA ->next && fastNodeB -> next ) {
+        fastNodeA = fastNodeB -> next;
+        fastNodeB = fastNodeA -> next;  
+        cout <<"s:" << slowNode <<" fA:" << fastNodeA <<" fB:" << fastNodeB << endl;
+        if (slowNode == fastNodeA || slowNode == fastNodeB ) return true;
+        slowNode = slowNode -> next;
+    }
+    return false;
+}
+
+Node *getListEnd(void)
+{
+    Node *cur = gHeadptr;
+    while(cur->next) {
+        cur =  cur -> next;
+    }
+    return cur;
+}
+
 int main(void)
 {
-     for ( int i = 100; i< 120; i ++ )
+     for ( int i = 100; i< 130; i ++ )
      addNodetoList(i);
      cout << "length is:" << lenList() << endl;
      iterateList();
-     reverseList();
+//   reverseList();
      addHeadtoList(1);
      iterateList();
+
+     Node *endptr = getListEnd();
+     endptr->next = gHeadptr;
+     
+     cout << "Begin:" << hasLoop(gHeadptr) << endl;
      cout << " End test " << endl;
 }
 
