@@ -102,6 +102,23 @@ void reverseList(void)
      gHeadptr = next;
 }
 
+
+void transerval(void)
+{
+    Node *cur = gHeadptr->next;
+    Node *nxt = cur -> next;
+    Node *prv = gHeadptr;
+    while(nxt -> next) {
+        prv = cur;
+        cur = nxt;
+        nxt = nxt -> next;
+        cout << "prv:" <<prv->data <<"cur:"<<cur->data <<"nxt:" << nxt->data << endl;
+    }
+
+}
+
+
+
 bool hasLoop( Node *startNode)
 {
     Node *slowNode = startNode;
@@ -110,7 +127,7 @@ bool hasLoop( Node *startNode)
     while( slowNode && fastNodeA ->next && fastNodeB -> next ) {
         fastNodeA = fastNodeB -> next;
         fastNodeB = fastNodeA -> next;  
-        cout <<"s:" << slowNode <<" fA:" << fastNodeA <<" fB:" << fastNodeB << endl;
+        cout <<"s:" << slowNode <<" fA:" << fastNodeA <<"fA->nxt:"<<fastNodeA->next <<" fB:" << fastNodeB <<"fB->nxt:"<< fastNodeB->next<< endl;
         if (slowNode == fastNodeA || slowNode == fastNodeB ) return true;
         slowNode = slowNode -> next;
     }
@@ -132,12 +149,13 @@ int main(void)
      addNodetoList(i);
      cout << "length is:" << lenList() << endl;
      iterateList();
-//   reverseList();
-     addHeadtoList(1);
-     iterateList();
 
-     Node *endptr = getListEnd();
-     endptr->next = gHeadptr;
+//     addHeadtoList(1);
+//     iterateList();
+
+//     Node *endptr = searchList(123);
+//     endptr->next = gHeadptr->next;
+     transerval();
      
      cout << "Begin:" << hasLoop(gHeadptr) << endl;
      cout << " End test " << endl;
