@@ -16,7 +16,7 @@ class Base {
    private:
       int m;
    public:
-      Base(int);
+      explicit Base(int);
       Base( Base &);
       void print(void) const
       {
