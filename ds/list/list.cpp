@@ -127,7 +127,7 @@ bool hasLoop( Node *startNode)
     while( slowNode && fastNodeA ->next && fastNodeB -> next ) {
         fastNodeA = fastNodeB -> next;
         fastNodeB = fastNodeA -> next;  
-        cout <<"s:" << slowNode <<" fA:" << fastNodeA <<"fA->nxt:"<<fastNodeA->next <<" fB:" << fastNodeB <<"fB->nxt:"<< fastNodeB->next<< endl;
+        cout <<"s:" << slowNode <<" fA:" << fastNodeA <<" fB:" << fastNodeB << endl;
         if (slowNode == fastNodeA || slowNode == fastNodeB ) return true;
         slowNode = slowNode -> next;
     }
@@ -153,9 +153,9 @@ int main(void)
 //     addHeadtoList(1);
 //     iterateList();
 
-//     Node *endptr = searchList(123);
-//     endptr->next = gHeadptr->next;
-     transerval();
+     Node *endptr = searchList(123);
+     endptr->next = gHeadptr->next;
+//     transerval();
      
      cout << "Begin:" << hasLoop(gHeadptr) << endl;
      cout << " End test " << endl;
