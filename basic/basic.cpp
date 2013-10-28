@@ -4,9 +4,11 @@ using namespace std;
 
 class Base {
     public:
+       Base(int a):mv(a){};
        void change(int a);
        void display(void) const;
        int mv;
+       ~Base(void){ cout << "die of: " << mv <<endl; };
 };
 
 void Base::change( int a)
@@ -21,9 +23,8 @@ void Base::display(void) const
 
 int main(void)
 {
-     Base b;
-     b.change(1);
-     b.display();  
-     return 0;
+    static Base b(1);
+    static Base c(2);
+    return 0;
 };
 
