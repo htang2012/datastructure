@@ -23,8 +23,8 @@ void Base::display(void) const
 
 int main(void)
 {
-    static Base b(1);
-    static Base c(2);
+    Base b(1);
+    Base c(2);
     return 0;
 };
 
